@@ -20,9 +20,9 @@ const Movie = ({
   clickedHandler,
 }) => (
   <div className="movie">
-    <a href="#" onClick={() => clickedHandler(id)}>
-      <img src={ poster_path ? image_api + poster_path : "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"} alt={title} />
-    </a>
+    <div style={{ cursor: "pointer" }} onClick={() => clickedHandler(id)}>
+      <img src={poster_path ? image_api + poster_path : "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"} alt={title} />
+    </div>
     <div className="movie-info">
       <h3>{title}</h3>
       <span className={`tag ${setColor(vote_average)}`}>{vote_average}</span>

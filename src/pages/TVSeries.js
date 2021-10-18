@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useImperativeHandle } from "react";
 import { useEffect, useState } from "react";
 import SerieDetail from "../components/SerieDetail";
 import Movie from "../components/Movie";
@@ -9,11 +9,31 @@ const search_api =
   "https://api.themoviedb.org/3/search/tv?&api_key=6f598a7c6a2e1adf74bf01eef663f037&query=";
 const tv_series = base_url + "/discover/tv?sort_by=popularity.desc&" + api_key;
 
-export const TVSeries = (props) => {
+export const TVSeries = React.forwardRef((props, ref) => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [movieID, setMovieID] = useState();
+  const [page, setPage] = useState(2);
+
+  useImperativeHandle(ref, () => {
+
+    return {
+      yeniFilmleriYukle() {
+
+        console.log("loading")
+
+        const url = tv_series + "&page=" + page;
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            const allMovies = [...movies, ...data.results]
+            setMovies(allMovies)
+            setPage(page + 1);
+          });
+      }
+    }
+  })
 
   useEffect(() => {
     fetch(props.url)
@@ -61,7 +81,7 @@ export const TVSeries = (props) => {
             value={searchTerm}
             onChange={handleOnChange}
           />
-        </form>  
+        </form>
       </div>
       <div className="movie-container">
         {movies.length > 0 &&
@@ -77,4 +97,4 @@ export const TVSeries = (props) => {
       </div>
     </div>
   );
-};
+});

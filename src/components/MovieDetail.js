@@ -38,18 +38,18 @@ function MovieDetail({ closeMovieDetail, id }) {
         <div className="title">
           <h1>{detail.title} </h1>
           <br />
-          {trailer.results.length  == 0 ? <img src="" /> :
-          <iframe
-            type="text/html"
-            style={{ backgroundColor: " #000" }}
-            width="90%"
-            height="450px"
-            src= {`//www.youtube.com/embed/${trailer.results[0].key}?autoplay=1&amp;origin=http%3A%2F%2Fwww.themoviedb.org&amp;hl=en&amp;modestbranding=1&amp;fs=1&amp;autohide=1`}
-            frameborder="0"
-            allowFullScreen="">
-          </iframe> 
+          {trailer.results.length == 0 ? <img src="" /> :
+            <iframe
+              type="text/html"
+              style={{ backgroundColor: " #000" }}
+              width="90%"
+              height="400px"
+              src={`//www.youtube.com/embed/${trailer.results[0].key}?autoplay=1&amp;origin=http%3A%2F%2Fwww.themoviedb.org&amp;hl=en&amp;modestbranding=1&amp;fs=1&amp;autohide=1`}
+              frameborder="0"
+              allowFullScreen="">
+            </iframe>
           }
-          
+
         </div>
         <div className="body">
           <div className="movieinfo">

@@ -25,7 +25,7 @@ function Navbar() {
                         <NavLink exact to="/top_rated_movies" activeClassName="active" className="nav-links" onClick={handleClick}>Top Rated Movies</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink exact to="/new_released_movies" activeClassName="active" className="nav-links" onClick={handleClick}>New Released Movies</NavLink>
+                        <NavLink exact to="/upcoming_movies" activeClassName="active" className="nav-links" onClick={handleClick}>Upcoming Movies</NavLink>
                     </li>
                     <li className="nav-item">
                         <NavLink exact to="/tv_series" activeClassName="active" className="nav-links" onClick={handleClick}>TV Series</NavLink>
